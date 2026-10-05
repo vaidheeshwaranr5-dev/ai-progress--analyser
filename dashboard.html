@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard | AI Progress Analyser</title>
+<link rel="stylesheet" href="dashboard.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <div class="logo"><span class="logo-mark">APA</span> AI PROGRESS ANALYSER</div>
+  <nav id="nav"></nav>
+  <div class="user">
+    <div class="avatar" id="avatarSm">A</div>
+    <div class="user-info"><b id="uName">Alex</b><small id="uEmail"></small></div>
+    <button class="icon-btn" id="logoutBtn" title="Log out" aria-label="Log out">⎋</button>
+  </div>
+</aside>
+
+<div class="main">
+  <header class="topbar">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <div>
+      <p class="brand-title">AI PROGRESS ANALYSER</p>
+      <h1 id="greeting">Good Morning 👋</h1>
+      <p class="muted">Let's improve your learning today.</p>
+    </div>
+    <div class="top-actions">
+      <select id="subjectPick" aria-label="Choose a subject"></select>
+      <div class="dd-wrap">
+        <button class="icon-btn" id="bellBtn" aria-label="Notifications">🔔<i class="dot"></i></button>
+        <div class="dropdown" id="bellMenu" hidden>
+          <b>Notifications</b>
+          <p>📉 Tree Traversal dropped below 50%</p>
+          <p>📅 Graph Algorithms quiz due today</p>
+          <p>🏆 You are 1 day from a 13-day streak</p>
+        </div>
+      </div>
+      <div class="dd-wrap">
+        <div class="avatar" id="avatarBtn" tabindex="0" role="button" aria-label="Profile">A</div>
+        <div class="dropdown" id="profMenu" hidden>
+          <b id="pName">Alex</b><small id="pEmail"></small>
+          <button class="link-btn" id="logoutBtn2">Log out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="grid-4" id="stats"></section>
+
+  <section class="card ai-card" id="recs">
+    <div class="ai-head">
+      <span class="ai-icon">✦</span>
+      <div><h2>AI Learning Insight</h2><small class="muted">Based on your last 6 tests</small></div>
+      <span class="conf">Confidence <b>92%</b><i><u style="width:92%"></u></i></span>
+    </div>
+    <p class="ai-text" id="aiText"></p>
+    <div class="ai-detail" id="aiDetail" hidden></div>
+    <div class="row">
+      <button class="btn" id="analyzeBtn">Analyze My Performance</button>
+      <button class="btn ghost" id="detailBtn">View Detailed Analysis →</button>
+    </div>
+    <h3>Recommended for you</h3>
+    <div class="grid-3" id="recList"></div>
+  </section>
+
+  <div class="two-col" id="performance">
+    <section class="card">
+      <div class="card-head"><h2>Your Learning Progress</h2>
+        <select id="range" aria-label="Range"><option value="7">Last 7 Tests</option><option value="30">Last 30 Days</option><option value="90">Last 3 Months</option></select>
+      </div>
+      <div class="chart-box"><canvas id="chart"></canvas></div>
+    </section>
+    <section class="card">
+      <h2>Overall Learning Progress</h2>
+      <div class="ring big" style="--p:78"><span>78%</span></div>
+      <p class="label ok">Strong areas</p><p class="tags" id="strong"></p>
+      <p class="label bad">Needs improvement</p><p class="tags" id="weak"></p>
+    </section>
+  </div>
+
+  <section class="card" id="subjects">
+    <div class="card-head"><h2>Subject Performance</h2>
+      <select id="subFilter" aria-label="Filter subjects"><option value="all">All subjects</option><option value="HIGH">High priority</option><option value="MEDIUM">Medium priority</option><option value="LOW">Low priority</option></select>
+    </div>
+    <div id="subList"></div>
+    <div class="ai-detail" id="subDetail" hidden></div>
+  </section>
+
+  <section id="topics">
+    <h2 class="sec-title">Topics That Need Your Attention</h2>
+    <div class="grid-3" id="topicList"></div>
+  </section>
+
+  <div class="two-col">
+    <section class="card" id="planner">
+      <div class="card-head"><h2>Your AI Study Plan</h2><b class="count" id="planCount"></b></div>
+      <div id="plan"></div>
+    </section>
+    <section class="card" id="achievements">
+      <h2>Achievements</h2>
+      <div class="badges" id="badges"></div>
+    </section>
+  </div>
+
+  <section class="card" id="history">
+    <div class="card-head"><h2>Recent Assessments</h2>
+      <select id="testFilter" aria-label="Filter tests"><option value="all">All results</option><option value="Excellent">Excellent</option><option value="Improved">Improved</option><option value="Needs Improvement">Needs Improvement</option></select>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>Test Name</th><th>Subject</th><th>Date</th><th>Score</th><th>Status</th><th>Action</th></tr></thead><tbody id="tbody"></tbody></table></div>
+    <button class="link-btn" id="viewAll">View All Results →</button>
+  </section>
+</div>
+
+<button class="ask-ai" id="askBtn">✦ Ask AI</button>
+<section class="chat" id="chat" hidden>
+  <div class="chat-head"><b>InsideBox AI Learning Assistant</b><button class="icon-btn" id="chatClose" aria-label="Close">✕</button></div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chips" id="chips"></div>
+  <div class="chat-in"><input id="chatInput" placeholder="Ask about your progress…"><button class="btn" id="chatSend">Send</button></div>
+</section>
+
+<div class="modal" id="modal" hidden><div class="modal-box" id="modalBox"></div></div>
+<script src="questions.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

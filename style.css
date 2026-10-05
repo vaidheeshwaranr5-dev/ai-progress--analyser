@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap");
+:root{
+  --ink:#16141c; --muted:#6f6b7a; --field:#ececf0; --error:#c62845;
+  --font:"Outfit","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{
+  font-family:var(--font); color:var(--ink);
+  display:grid; place-items:center; padding:24px;
+  /* Page background: soft purple/pink clouds. Swap for your own image if you like:
+     background:url("images/background.jpg") center/cover no-repeat; */
+  background:
+    radial-gradient(60% 50% at 15% 20%, #e46bb3 0%, transparent 70%),
+    radial-gradient(55% 55% at 85% 80%, #6d5bd6 0%, transparent 70%),
+    radial-gradient(40% 40% at 70% 15%, #f19ac4 0%, transparent 70%),
+    #7a4fc0;
+}
+.card{
+  width:min(920px,100%); min-height:520px;
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+  background:rgba(255,255,255,.55); padding:12px; border-radius:28px;
+  backdrop-filter:blur(8px); box-shadow:0 30px 80px rgba(40,10,80,.35);
+}
+.form-side{
+  background:#fff; border-radius:20px; padding:48px 44px;
+  display:flex; align-items:center; justify-content:center;
+}
+form{width:100%; max-width:300px}
+h1{font-size:1.7rem; font-weight:500; text-align:center}
+.sub{font-size:.8rem; color:var(--muted); text-align:center; margin:6px 0 22px}
+label{display:block; font-size:.72rem; font-weight:500; margin:14px 0 6px}
+input[type=email],input[type=password]{
+  width:100%; padding:11px 12px; border:1.5px solid transparent;
+  border-radius:8px; background:var(--field); font:inherit; font-size:.85rem; color:var(--ink);
+}
+input:focus-visible{outline:2px solid #6d5bd6; outline-offset:1px; background:#fff}
+input.invalid{border-color:var(--error); background:#fff5f7}
+.field-error{display:block; min-height:14px; margin-top:4px; font-size:.7rem; color:var(--error)}
+.form-error{
+  background:#fdecef; color:var(--error); border-left:3px solid var(--error);
+  padding:10px 12px; border-radius:6px; font-size:.78rem; margin-bottom:6px;
+}
+.remember{display:flex; align-items:center; gap:8px; font-weight:400; color:var(--muted); margin:10px 0 18px}
+button{
+  width:100%; padding:12px; border:0; border-radius:8px; cursor:pointer;
+  background:var(--ink); color:#fff; font:inherit; font-size:.85rem; font-weight:500;
+}
+button:hover{background:#2c2838}
+button:focus-visible{outline:2px solid #6d5bd6; outline-offset:2px}
+.member{font-size:.72rem; text-align:center; color:var(--muted); margin-top:14px}
+.member a{color:var(--ink); font-weight:600; text-decoration:none}
+ 
+.art-side{
+  position:relative; border-radius:20px; overflow:hidden; display:flex; align-items:flex-end;
+  /* Put your photo at images/login-art.jpg; the gradient shows if it's missing */
+  background:
+    url("images/login-art.jpg") center/cover no-repeat,
+    linear-gradient(160deg,#5a6fe0 0%,#c860b4 55%,#f08ab8 100%);
+}
+.art-side::after{content:""; position:absolute; inset:0; background:linear-gradient(to top,rgba(20,10,40,.55),transparent 55%)}
+.art-caption{position:relative; z-index:1; color:#fff; font-size:1.5rem; font-weight:300; line-height:1.2; padding:28px}
+.art-caption strong{font-weight:600}
+ 
+@media (max-width:760px){
+  .card{grid-template-columns:1fr}
+  .art-side{display:none}
+  .form-side{padding:36px 24px}
+}
+ 

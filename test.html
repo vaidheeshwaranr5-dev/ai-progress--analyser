@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assessment | AI Progress Analyser</title>
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="test.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="tw">
+  <header class="th">
+    <div><p class="brand-title">AI PROGRESS ANALYSER</p><h1 id="tSubject"></h1><p class="muted">AI Progress Assessment</p></div>
+    <div class="tprog"><b id="tCount"></b><div class="bar"><u id="tBar" style="background:var(--primary)"></u></div></div>
+  </header>
+  <div class="tgrid" id="quiz">
+    <section class="card">
+      <small id="qNo"></small>
+      <h2 class="qtext" id="qText"></h2>
+      <div id="opts"></div>
+      <div class="row between"><button class="btn ghost" id="prev">← Previous</button><button class="btn p" id="next">Next →</button></div>
+    </section>
+    <aside class="card"><h3>Question navigator</h3><div class="qnav" id="qnav"></div>
+      <p class="legend"><i class="k cur"></i>Current <i class="k ans"></i>Answered <i class="k"></i>Unanswered</p></aside>
+  </div>
+  <div id="report" hidden></div>
+</div>
+<div class="modal" id="confirm" hidden><div class="modal-box">
+  <h2>Are you sure you want to submit the test?</h2>
+  <p class="muted" id="confirmInfo"></p>
+  <div class="row"><button class="btn ghost" id="cancelSub">Cancel</button><button class="btn p" id="okSub">Submit Test</button></div>
+</div></div>
+<script src="questions.js"></script>
+<script src="test.js"></script>
+</body>
+</html>

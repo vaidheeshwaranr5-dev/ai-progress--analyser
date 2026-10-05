@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login | AI Progress Analyser</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>
+    AL PROGRESS ANALYSER
+  </h1>
+  <main class="card">
+    <section class="form-side">
+      <form id="loginForm" novalidate>
+        <h1>Login</h1>
+        <p class="sub">Enter your credentials to get in</p>
+
+        <div id="formError" class="form-error" role="alert" hidden></div>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
+        <small class="field-error" id="emailError"></small>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="••••••••" autocomplete="current-password">
+        <small class="field-error" id="passwordError"></small>
+
+        <label class="remember"><input type="checkbox" id="remember"> Remember me</label>
+
+        <button type="submit">Login</button>
+        <p class="member">Not a member? <a href="#">Create an account</a></p>
+      </form>
+    </section>
+
+    <section class="art-side">
+      <div class="art-caption">Be a part of<br><strong>your own progress</strong></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
